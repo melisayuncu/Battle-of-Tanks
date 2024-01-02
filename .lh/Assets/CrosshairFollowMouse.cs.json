@@ -1,0 +1,18 @@
+{
+    "sourceFile": "Assets/CrosshairFollowMouse.cs",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1703765934334,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1703765934334,
+            "name": "Commit-0",
+            "content": "using UnityEngine;\r\n\r\npublic class CrosshairFollowMouse : MonoBehaviour\r\n{\r\n    public float followSpeed = 10f; // Adjust the speed of following\r\n\r\n    // Update is called once per frame\r\n    void Update()\r\n    {\r\n        FollowMouse();\r\n    }\r\n\r\n    void FollowMouse()\r\n    {\r\n        // Get the mouse position in world space\r\n        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);\r\n        mousePosition.z = 0f; // Make sure the z-coordinate is zero\r\n\r\n        // Smoothly interpolate towards the mouse position\r\n        transform.position = Vector3.Lerp(transform.position, mousePosition, Time.deltaTime * followSpeed);\r\n    }\r\n}\r\n"
+        }
+    ]
+}

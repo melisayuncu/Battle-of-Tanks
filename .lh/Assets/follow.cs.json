@@ -1,0 +1,54 @@
+{
+    "sourceFile": "Assets/follow.cs",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 9,
+            "patches": [
+                {
+                    "date": 1703767465151,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1703767483159,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n using UnityEngine;\r\n \r\n-public class CrosshairFollowMouse : MonoBehaviour\r\n+public class follow : MonoBehaviour\r\n {\r\n     public float followSpeed = 10f; // Adjust the speed of following\r\n \r\n     // Update is called once per frame\r\n"
+                },
+                {
+                    "date": 1703768460031,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n using UnityEngine;\r\n \r\n-public class follow : MonoBehaviour\r\n+public class Crosshair : MonoBehaviour\r\n {\r\n     public float followSpeed = 10f; // Adjust the speed of following\r\n \r\n     // Update is called once per frame\r\n@@ -17,6 +17,11 @@\n         mousePosition.z = 0f; // Make sure the z-coordinate is zero\r\n \r\n         // Smoothly interpolate towards the mouse position\r\n         transform.position = Vector3.Lerp(transform.position, mousePosition, Time.deltaTime * followSpeed);\r\n+\r\n+        // Rotate the crosshair based on the mouse movement\r\n+        float mouseX = Input.GetAxis(\"Mouse X\");\r\n+        float rotationAmount = mouseX * followSpeed;\r\n+        transform.Rotate(Vector3.forward, -rotationAmount);\r\n     }\r\n }\r\n"
+                },
+                {
+                    "date": 1703768465945,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n using UnityEngine;\r\n \r\n-public class Crosshair : MonoBehaviour\r\n+public class Follow : MonoBehaviour\r\n {\r\n     public float followSpeed = 10f; // Adjust the speed of following\r\n \r\n     // Update is called once per frame\r\n"
+                },
+                {
+                    "date": 1703768589564,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,27 +1,24 @@\n using UnityEngine;\r\n \r\n-public class Follow : MonoBehaviour\r\n+public class FollowRotation : MonoBehaviour\r\n {\r\n-    public float followSpeed = 10f; // Adjust the speed of following\r\n+    public float rotationSpeed = 5f; // Adjust the speed of rotation\r\n \r\n     // Update is called once per frame\r\n     void Update()\r\n     {\r\n-        FollowMouse();\r\n+        RotateWithMouse();\r\n     }\r\n \r\n-    void FollowMouse()\r\n+    void RotateWithMouse()\r\n     {\r\n-        // Get the mouse position in world space\r\n-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);\r\n-        mousePosition.z = 0f; // Make sure the z-coordinate is zero\r\n+        // Get the mouse X position (horizontal movement)\r\n+        float mouseX = Input.GetAxis(\"Mouse X\");\r\n \r\n-        // Smoothly interpolate towards the mouse position\r\n-        transform.position = Vector3.Lerp(transform.position, mousePosition, Time.deltaTime * followSpeed);\r\n+        // Calculate the desired rotation based on mouse input\r\n+        float desiredRotation = transform.localEulerAngles.y + mouseX * rotationSpeed;\r\n \r\n-        // Rotate the crosshair based on the mouse movement\r\n-        float mouseX = Input.GetAxis(\"Mouse X\");\r\n-        float rotationAmount = mouseX * followSpeed;\r\n-        transform.Rotate(Vector3.forward, -rotationAmount);\r\n+        // Apply the rotation to the object\r\n+        transform.localRotation = Quaternion.Euler(0f, desiredRotation, 0f);\r\n     }\r\n }\r\n"
+                },
+                {
+                    "date": 1703768623255,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n using UnityEngine;\r\n \r\n-public class FollowRotation : MonoBehaviour\r\n+public class Follow : MonoBehaviour\r\n {\r\n     public float rotationSpeed = 5f; // Adjust the speed of rotation\r\n \r\n     // Update is called once per frame\r\n"
+                },
+                {
+                    "date": 1703768697493,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,24 +1,24 @@\n using UnityEngine;\r\n \r\n-public class Follow : MonoBehaviour\r\n+public class FollowRotation : MonoBehaviour\r\n {\r\n     public float rotationSpeed = 5f; // Adjust the speed of rotation\r\n \r\n     // Update is called once per frame\r\n     void Update()\r\n     {\r\n-        RotateWithMouse();\r\n+        RotateCrosshairWithMouse();\r\n     }\r\n \r\n-    void RotateWithMouse()\r\n+    void RotateCrosshairWithMouse()\r\n     {\r\n         // Get the mouse X position (horizontal movement)\r\n         float mouseX = Input.GetAxis(\"Mouse X\");\r\n \r\n         // Calculate the desired rotation based on mouse input\r\n-        float desiredRotation = transform.localEulerAngles.y + mouseX * rotationSpeed;\r\n+        float desiredRotation = transform.localEulerAngles.z - mouseX * rotationSpeed;\r\n \r\n-        // Apply the rotation to the object\r\n-        transform.localRotation = Quaternion.Euler(0f, desiredRotation, 0f);\r\n+        // Apply the rotation to the crosshair\r\n+        transform.localRotation = Quaternion.Euler(0f, 0f, desiredRotation);\r\n     }\r\n }\r\n"
+                },
+                {
+                    "date": 1703768704125,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n using UnityEngine;\r\n \r\n-public class FollowRotation : MonoBehaviour\r\n+public class Follow : MonoBehaviour\r\n {\r\n     public float rotationSpeed = 5f; // Adjust the speed of rotation\r\n \r\n     // Update is called once per frame\r\n"
+                },
+                {
+                    "date": 1703768797709,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,24 +1,24 @@\n using UnityEngine;\r\n \r\n-public class Follow : MonoBehaviour\r\n+public class FollowMouse : MonoBehaviour\r\n {\r\n-    public float rotationSpeed = 5f; // Adjust the speed of rotation\r\n+    public float movementSpeed = 5f; // Adjust the speed of movement\r\n \r\n     // Update is called once per frame\r\n     void Update()\r\n     {\r\n-        RotateCrosshairWithMouse();\r\n+        MoveCrosshairWithMouse();\r\n     }\r\n \r\n-    void RotateCrosshairWithMouse()\r\n+    void MoveCrosshairWithMouse()\r\n     {\r\n         // Get the mouse X position (horizontal movement)\r\n         float mouseX = Input.GetAxis(\"Mouse X\");\r\n \r\n-        // Calculate the desired rotation based on mouse input\r\n-        float desiredRotation = transform.localEulerAngles.z - mouseX * rotationSpeed;\r\n+        // Calculate the desired horizontal position based on mouse input\r\n+        float desiredX = transform.position.x + mouseX * movementSpeed;\r\n \r\n-        // Apply the rotation to the crosshair\r\n-        transform.localRotation = Quaternion.Euler(0f, 0f, desiredRotation);\r\n+        // Apply the movement to the crosshair\r\n+        transform.position = new Vector3(desiredX, transform.position.y, transform.position.z);\r\n     }\r\n }\r\n"
+                },
+                {
+                    "date": 1703768803051,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n using UnityEngine;\r\n \r\n-public class FollowMouse : MonoBehaviour\r\n+public class Follow : MonoBehaviour\r\n {\r\n     public float movementSpeed = 5f; // Adjust the speed of movement\r\n \r\n     // Update is called once per frame\r\n"
+                }
+            ],
+            "date": 1703767465151,
+            "name": "Commit-0",
+            "content": "using UnityEngine;\r\n\r\npublic class CrosshairFollowMouse : MonoBehaviour\r\n{\r\n    public float followSpeed = 10f; // Adjust the speed of following\r\n\r\n    // Update is called once per frame\r\n    void Update()\r\n    {\r\n        FollowMouse();\r\n    }\r\n\r\n    void FollowMouse()\r\n    {\r\n        // Get the mouse position in world space\r\n        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);\r\n        mousePosition.z = 0f; // Make sure the z-coordinate is zero\r\n\r\n        // Smoothly interpolate towards the mouse position\r\n        transform.position = Vector3.Lerp(transform.position, mousePosition, Time.deltaTime * followSpeed);\r\n    }\r\n}\r\n"
+        }
+    ]
+}

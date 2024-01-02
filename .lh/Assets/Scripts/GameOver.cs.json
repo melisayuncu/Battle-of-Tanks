@@ -1,0 +1,26 @@
+{
+    "sourceFile": "Assets/Scripts/GameOver.cs",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1703942339352,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1703942344737,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n public class GameOver : MonoBehaviour\r\n {\r\n     public void OnPlayAgainButton()\r\n     {\r\n-        Score.scorecount \r\n+        Score.scorecount = 0;\r\n         SceneManager.LoadScene(1);\r\n     }\r\n   \r\n     public void OnQuitButton()\r\n"
+                },
+                {
+                    "date": 1704126148730,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,52 @@\n+using System.Collections;\r\n+using System.Collections.Generic;\r\n+using TMPro;\r\n+using UnityEngine;\r\n+using UnityEngine.SceneManagement;\r\n+\r\n+public class GameOver : MonoBehaviour\r\n+{\r\n+    public TextMeshProUGUI pointsText;\r\n+    public TextMeshProUGUI highScoreText;\r\n+\r\n+    void Start()\r\n+    {\r\n+        // Retrieve the last score from PlayerPrefs\r\n+        int lastScore = PlayerPrefs.GetInt(\"LastScore\", 0);\r\n+        if (pointsText != null)\r\n+        {\r\n+\r\n+            pointsText.text = \"Score: \" + lastScore.ToString();\r\n+\r\n+        }\r\n+        // Retrieve the high score from PlayerPrefs\r\n+        int highScore = PlayerPrefs.GetInt(\"HighScore\", 0);\r\n+\r\n+        // Check if the last score is higher than the current high score\r\n+        if (lastScore > highScore)\r\n+        {\r\n+            // Update the high score\r\n+            highScore = lastScore;\r\n+\r\n+            // Save the new high score to PlayerPrefs\r\n+            PlayerPrefs.SetInt(\"HighScore\", highScore);\r\n+            PlayerPrefs.Save();\r\n+        }\r\n+\r\n+        // Display the high score\r\n+        if (highScoreText != null)\r\n+        {\r\n+            highScoreText.text = \"High Score: \" + highScore.ToString();\r\n+        }\r\n+    }\r\n+    public void OnPlayAgainButton()\r\n+    {\r\n+        Score.scorecount = 0;\r\n+        SceneManager.LoadScene(1);\r\n+    }\r\n+\r\n+    public void OnQuitButton()\r\n+    {\r\n+        Application.Quit();\r\n+    }\r\n+}\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1703942339352,
+            "name": "Commit-0",
+            "content": "using System.Collections;\r\nusing System.Collections.Generic;\r\nusing UnityEngine;\r\nusing UnityEngine.SceneManagement;\r\n\r\npublic class GameOver : MonoBehaviour\r\n{\r\n    public void OnPlayAgainButton()\r\n    {\r\n        Score.scorecount \r\n        SceneManager.LoadScene(1);\r\n    }\r\n  \r\n    public void OnQuitButton()\r\n    {\r\n        Application.Quit();\r\n    }\r\n}\r\n"
+        }
+    ]
+}

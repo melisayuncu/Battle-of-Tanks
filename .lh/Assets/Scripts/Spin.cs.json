@@ -1,0 +1,94 @@
+{
+    "sourceFile": "Assets/Scripts/Spin.cs",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 19,
+            "patches": [
+                {
+                    "date": 1703936058307,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1703936064942,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,13 +3,10 @@\n using UnityEngine;\r\n \r\n public class SPin : MonoBehaviour\r\n {\r\n-    public float spinSpeed =     void Start()\r\n-    {\r\n-        \r\n-    }\r\n-\r\n+    public float spinSpeed = 90.0f;\r\n+       \r\n     // Update is called once per frame\r\n     void Update()\r\n     {\r\n         \r\n"
+                },
+                {
+                    "date": 1703936074551,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,7 +8,7 @@\n        \r\n     // Update is called once per frame\r\n     void Update()\r\n     {\r\n-        \r\n+        if(Input.get)\r\n     }\r\n }\r\n"
+                },
+                {
+                    "date": 1703936080723,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,7 +8,7 @@\n        \r\n     // Update is called once per frame\r\n     void Update()\r\n     {\r\n-        if(Input.get)\r\n+        if(Input.GetKey())\r\n     }\r\n }\r\n"
+                },
+                {
+                    "date": 1703936087269,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,14 @@\n+using System.Collections;\r\n+using System.Collections.Generic;\r\n+using UnityEngine;\r\n+\r\n+public class SPin : MonoBehaviour\r\n+{\r\n+    public float spinSpeed = 90.0f;\r\n+       \r\n+    // Update is called once per frame\r\n+    void Update()\r\n+    {\r\n+        if(Input.GetKey(KeyCode.Q))\r\n+    }\r\n+}\r\n"
+                },
+                {
+                    "date": 1703936097526,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,20 +9,7 @@\n     // Update is called once per frame\r\n     void Update()\r\n     {\r\n         if(Input.GetKey(KeyCode.Q))\r\n+        transform.Rotate()\r\n     }\r\n }\r\n-using System.Collections;\r\n-using System.Collections.Generic;\r\n-using UnityEngine;\r\n-\r\n-public class SPin : MonoBehaviour\r\n-{\r\n-    public float spinSpeed = 90.0f;\r\n-       \r\n-    // Update is called once per frame\r\n-    void Update()\r\n-    {\r\n-        if(Input.GetKey())\r\n-    }\r\n-}\r\n"
+                },
+                {
+                    "date": 1703936107214,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,7 +9,7 @@\n     // Update is called once per frame\r\n     void Update()\r\n     {\r\n         if(Input.GetKey(KeyCode.Q))\r\n-        transform.Rotate()\r\n+        transform.Rotate(Vector);\r\n     }\r\n }\r\n"
+                },
+                {
+                    "date": 1703936112986,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,7 +9,7 @@\n     // Update is called once per frame\r\n     void Update()\r\n     {\r\n         if(Input.GetKey(KeyCode.Q))\r\n-        transform.Rotate(Vector);\r\n+        transform.Rotate(Vector3.up, );\r\n     }\r\n }\r\n"
+                },
+                {
+                    "date": 1703936125109,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,7 +9,7 @@\n     // Update is called once per frame\r\n     void Update()\r\n     {\r\n         if(Input.GetKey(KeyCode.Q))\r\n-        transform.Rotate(Vector3.up, );\r\n+        transform.Rotate(Vector3.up, spinSpeed-Time);\r\n     }\r\n }\r\n"
+                },
+                {
+                    "date": 1703936134456,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,7 +9,7 @@\n     // Update is called once per frame\r\n     void Update()\r\n     {\r\n         if(Input.GetKey(KeyCode.Q))\r\n-        transform.Rotate(Vector3.up, spinSpeed-Time);\r\n+        transform.Rotate(Vector3.up, spinSpeed*Time.deltaTime);\r\n     }\r\n }\r\n"
+                },
+                {
+                    "date": 1703936150021,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,5 +11,9 @@\n     {\r\n         if(Input.GetKey(KeyCode.Q))\r\n         transform.Rotate(Vector3.up, spinSpeed*Time.deltaTime);\r\n     }\r\n+    {\r\n+        if(Input.GetKey(KeyCode.Q))\r\n+        transform.Rotate(Vector3.up, spinSpeed*Time.deltaTime);\r\n+    }\r\n }\r\n"
+                },
+                {
+                    "date": 1703936172289,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,19 @@\n+using System.Collections;\r\n+using System.Collections.Generic;\r\n+using UnityEngine;\r\n+\r\n+public class SPin : MonoBehaviour\r\n+{\r\n+    public float spinSpeed = 90.0f;\r\n+       \r\n+    // Update is called once per frame\r\n+    void Update()\r\n+    {\r\n+        if(Input.GetKey(KeyCode.Q))\r\n+        transform.Rotate(Vector3.up, spinSpeed*Time.deltaTime);\r\n+    }\r\n+    {\r\n+        if(Input.GetKey(KeyCode.E))\r\n+        transform.Rotate(Vector3.up, -spinSpeed*Time.deltaTime);\r\n+    }\r\n+}\r\n"
+                },
+                {
+                    "date": 1703936180715,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,31 +8,12 @@\n        \r\n     // Update is called once per frame\r\n     void Update()\r\n     {\r\n-        if(Input.GetKey(KeyCode.Q))\r\n+        if(Input.GetKey(KeyCode.Q)){}\r\n         transform.Rotate(Vector3.up, spinSpeed*Time.deltaTime);\r\n     }\r\n     {\r\n         if(Input.GetKey(KeyCode.E))\r\n         transform.Rotate(Vector3.up, -spinSpeed*Time.deltaTime);\r\n     }\r\n }\r\n-using System.Collections;\r\n-using System.Collections.Generic;\r\n-using UnityEngine;\r\n-\r\n-public class SPin : MonoBehaviour\r\n-{\r\n-    public float spinSpeed = 90.0f;\r\n-       \r\n-    // Update is called once per frame\r\n-    void Update()\r\n-    {\r\n-        if(Input.GetKey(KeyCode.Q))\r\n-        transform.Rotate(Vector3.up, spinSpeed*Time.deltaTime);\r\n-    }\r\n-    {\r\n-        if(Input.GetKey(KeyCode.Q))\r\n-        transform.Rotate(Vector3.up, spinSpeed*Time.deltaTime);\r\n-    }\r\n-}\r\n"
+                },
+                {
+                    "date": 1703936188005,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,12 +8,12 @@\n        \r\n     // Update is called once per frame\r\n     void Update()\r\n     {\r\n-        if(Input.GetKey(KeyCode.Q)){}\r\n-        transform.Rotate(Vector3.up, spinSpeed*Time.deltaTime);\r\n+        if(Input.GetKey(KeyCode.Q)){        transform.Rotate(Vector3.up, spinSpeed*Time.deltaTime);\r\n+}\r\n     }\r\n     {\r\n-        if(Input.GetKey(KeyCode.E))\r\n+        if(Input.GetKey(KeyCode.E)){}\r\n         transform.Rotate(Vector3.up, -spinSpeed*Time.deltaTime);\r\n     }\r\n }\r\n"
+                },
+                {
+                    "date": 1703936194568,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,9 @@\n         if(Input.GetKey(KeyCode.Q)){        transform.Rotate(Vector3.up, spinSpeed*Time.deltaTime);\r\n }\r\n     }\r\n     {\r\n-        if(Input.GetKey(KeyCode.E)){}\r\n-        transform.Rotate(Vector3.up, -spinSpeed*Time.deltaTime);\r\n+        if(Input.GetKey(KeyCode.E)){   \r\n+                 transform.Rotate(Vector3.up, -spinSpeed*Time.deltaTime);\r\n+}\r\n     }\r\n }\r\n"
+                },
+                {
+                    "date": 1703936200506,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,11 +8,12 @@\n        \r\n     // Update is called once per frame\r\n     void Update()\r\n     {\r\n-        if(Input.GetKey(KeyCode.Q)){        transform.Rotate(Vector3.up, spinSpeed*Time.deltaTime);\r\n+        if(Input.GetKey(KeyCode.Q)){      \r\n+              transform.Rotate(Vector3.up, spinSpeed*Time.deltaTime);\r\n }\r\n-    }\r\n+    \r\n     {\r\n         if(Input.GetKey(KeyCode.E)){   \r\n                  transform.Rotate(Vector3.up, -spinSpeed*Time.deltaTime);\r\n }\r\n"
+                },
+                {
+                    "date": 1703936207923,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,10 +12,10 @@\n         if(Input.GetKey(KeyCode.Q)){      \r\n               transform.Rotate(Vector3.up, spinSpeed*Time.deltaTime);\r\n }\r\n     \r\n-    {\r\n+    \r\n         if(Input.GetKey(KeyCode.E)){   \r\n                  transform.Rotate(Vector3.up, -spinSpeed*Time.deltaTime);\r\n }\r\n-    }\r\n+    \r\n }\r\n"
+                },
+                {
+                    "date": 1703936215269,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,4 +18,5 @@\n                  transform.Rotate(Vector3.up, -spinSpeed*Time.deltaTime);\r\n }\r\n     \r\n }\r\n+\r\n"
+                },
+                {
+                    "date": 1703936248625,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n using System.Collections;\r\n using System.Collections.Generic;\r\n using UnityEngine;\r\n \r\n-public class SPin : MonoBehaviour\r\n+public class Spin : MonoBehaviour\r\n {\r\n     public float spinSpeed = 90.0f;\r\n        \r\n     // Update is called once per frame\r\n@@ -18,5 +18,5 @@\n                  transform.Rotate(Vector3.up, -spinSpeed*Time.deltaTime);\r\n }\r\n     \r\n }\r\n-\r\n+}\r\n"
+                },
+                {
+                    "date": 1703936319062,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n        \r\n     // Update is called once per frame\r\n     void Update()\r\n     {\r\n-        if(Input.GetKey(KeyCode.Q)){      \r\n+        if(Input.GetKey(KeyCode.E)){      \r\n               transform.Rotate(Vector3.up, spinSpeed*Time.deltaTime);\r\n }\r\n     \r\n     \r\n"
+                }
+            ],
+            "date": 1703936058307,
+            "name": "Commit-0",
+            "content": "using System.Collections;\r\nusing System.Collections.Generic;\r\nusing UnityEngine;\r\n\r\npublic class SPin : MonoBehaviour\r\n{\r\n    public float spinSpeed =     void Start()\r\n    {\r\n        \r\n    }\r\n\r\n    // Update is called once per frame\r\n    void Update()\r\n    {\r\n        \r\n    }\r\n}\r\n"
+        }
+    ]
+}

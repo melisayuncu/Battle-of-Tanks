@@ -1,0 +1,46 @@
+{
+    "sourceFile": "Assets/Scripts/ThirdPersonShooterController.cs",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1704142830623,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1704142837365,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n \r\n     void Update()\r\n     {\r\n         // Check for right mouse button press\r\n-        if (Input.GetMouseButtonDown(1) ||) // 1 corresponds to the right mouse button\r\n+        if (Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown ) // 1 corresponds to the right mouse button\r\n         {\r\n             // Toggle between cameras\r\n             ToggleCameras();\r\n         }\r\n"
+                },
+                {
+                    "date": 1704142850643,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n \r\n     void Update()\r\n     {\r\n         // Check for right mouse button press\r\n-        if (Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown ) // 1 corresponds to the right mouse button\r\n+        if (Input.GetMouseButtonDown(1) || Input.GetButtonDown(\"Jump\") ) // 1 corresponds to the right mouse button\r\n         {\r\n             // Toggle between cameras\r\n             ToggleCameras();\r\n         }\r\n"
+                },
+                {
+                    "date": 1704142857977,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n \r\n     void Update()\r\n     {\r\n         // Check for right mouse button press\r\n-        if (Input.GetMouseButtonDown(1) || Input.GetButtonDown(\"Jump\") ) // 1 corresponds to the right mouse button\r\n+        if (Input.GetMouseButtonDown(1) || Input.GetButtonDown(\"z\") ) // 1 corresponds to the right mouse button\r\n         {\r\n             // Toggle between cameras\r\n             ToggleCameras();\r\n         }\r\n"
+                },
+                {
+                    "date": 1704142880267,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n \r\n     void Update()\r\n     {\r\n         // Check for right mouse button press\r\n-        if (Input.GetMouseButtonDown(1) || Input.GetButtonDown(\"z\") ) // 1 corresponds to the right mouse button\r\n+        if (Input.GetMouseButtonDown(1) || Input.GetButtonDown(\"Z\") ) // 1 corresponds to the right mouse button\r\n         {\r\n             // Toggle between cameras\r\n             ToggleCameras();\r\n         }\r\n"
+                },
+                {
+                    "date": 1704142921230,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,17 +21,18 @@\n             tankAimCamera.gameObject.SetActive(false);\r\n     }\r\n \r\n     void Update()\r\n+{\r\n+    // Check for the right mouse button or the Z key\r\n+    if (Input.GetMouseButtonDown(1) || Input.GetButtonDown(\"Z\"))\r\n     {\r\n-        // Check for right mouse button press\r\n-        if (Input.GetMouseButtonDown(1) || Input.GetButtonDown(\"Z\") ) // 1 corresponds to the right mouse button\r\n-        {\r\n-            // Toggle between cameras\r\n-            ToggleCameras();\r\n-        }\r\n+        // Toggle between cameras\r\n+        ToggleCameras();\r\n     }\r\n+}\r\n \r\n+\r\n     void ToggleCameras()\r\n     {\r\n         // Ensure cameras are not null\r\n         if (tankFollowCamera != null && tankAimCamera != null)\r\n"
+                },
+                {
+                    "date": 1704143069188,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n \r\n     void Update()\r\n {\r\n     // Check for the right mouse button or the Z key\r\n-    if (Input.GetMouseButtonDown(1) || Input.GetButtonDown(\"Z\"))\r\n+    if (Input.GetMouseButtonDown(1) || Input.GetButtonDown(\"submit\"))\r\n     {\r\n         // Toggle between cameras\r\n         ToggleCameras();\r\n     }\r\n"
+                },
+                {
+                    "date": 1704143091209,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n \r\n     void Update()\r\n {\r\n     // Check for the right mouse button or the Z key\r\n-    if (Input.GetMouseButtonDown(1) || Input.GetButtonDown(\"submit\"))\r\n+    if (Input.GetMouseButtonDown(1) || Input.GetButtonDown(\"Submit\"))\r\n     {\r\n         // Toggle between cameras\r\n         ToggleCameras();\r\n     }\r\n"
+                }
+            ],
+            "date": 1704142830623,
+            "name": "Commit-0",
+            "content": "using System.Collections;\r\nusing System.Collections.Generic;\r\nusing UnityEngine;\r\nusing Cinemachine; // we want to change something on the camera itself later\r\npublic class ThirdPersonShooterController : MonoBehaviour\r\n{\r\n    private CinemachineVirtualCamera tankFollowCamera;\r\n    private CinemachineVirtualCamera tankAimCamera;\r\n\r\n    void Start()\r\n    {\r\n        // Find the cameras by their names\r\n        tankFollowCamera = GameObject.Find(\"TankFollowCamera\").GetComponent<CinemachineVirtualCamera>();\r\n        tankAimCamera = GameObject.Find(\"TankAimCamera\").GetComponent<CinemachineVirtualCamera>();\r\n\r\n        // Ensure only the follow camera is active initially\r\n        if (tankFollowCamera != null)\r\n            tankFollowCamera.gameObject.SetActive(true);\r\n\r\n        if (tankAimCamera != null)\r\n            tankAimCamera.gameObject.SetActive(false);\r\n    }\r\n\r\n    void Update()\r\n    {\r\n        // Check for right mouse button press\r\n        if (Input.GetMouseButtonDown(1) ||) // 1 corresponds to the right mouse button\r\n        {\r\n            // Toggle between cameras\r\n            ToggleCameras();\r\n        }\r\n    }\r\n\r\n    void ToggleCameras()\r\n    {\r\n        // Ensure cameras are not null\r\n        if (tankFollowCamera != null && tankAimCamera != null)\r\n        {\r\n            // Toggle the active state of cameras\r\n            tankFollowCamera.gameObject.SetActive(!tankFollowCamera.gameObject.activeSelf);\r\n            tankAimCamera.gameObject.SetActive(!tankAimCamera.gameObject.activeSelf);\r\n        }\r\n    }\r\n\r\n\r\n\r\n    \r\n}\r\n"
+        }
+    ]
+}

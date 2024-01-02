@@ -1,0 +1,82 @@
+{
+    "sourceFile": "Assets/Score.cs",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 16,
+            "patches": [
+                {
+                    "date": 1703769132801,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1703769180610,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,13 @@\n using System.Collections;\r\n using System.Collections.Generic;\r\n using UnityEngine;\r\n-using UnityEngine;\r\n+using UnityEngine.UI;\r\n \r\n \r\n public class Score : MonoBehaviour\r\n+\r\n+\r\n {\r\n     // Start is called before the first frame update\r\n     void Start()\r\n     {\r\n"
+                },
+                {
+                    "date": 1703769189396,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,11 +4,10 @@\n using UnityEngine.UI;\r\n \r\n \r\n public class Score : MonoBehaviour\r\n-\r\n-\r\n {\r\n+    public Text;\r\n     // Start is called before the first frame update\r\n     void Start()\r\n     {\r\n         \r\n"
+                },
+                {
+                    "date": 1703769300990,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n \r\n \r\n public class Score : MonoBehaviour\r\n {\r\n-    public Text;\r\n+    public Text score;\r\n     // Start is called before the first frame update\r\n     void Start()\r\n     {\r\n         \r\n"
+                },
+                {
+                    "date": 1703769313625,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,10 @@\n \r\n \r\n public class Score : MonoBehaviour\r\n {\r\n-    public Text score;\r\n+    public Text score\r\n+    ;\r\n     // Start is called before the first frame update\r\n     void Start()\r\n     {\r\n         \r\n"
+                },
+                {
+                    "date": 1703769321417,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,10 +5,10 @@\n \r\n \r\n public class Score : MonoBehaviour\r\n {\r\n-    public Text score\r\n-    ;\r\n+    public Text score;\r\n+    public float score;\r\n     // Start is called before the first frame update\r\n     void Start()\r\n     {\r\n         \r\n"
+                },
+                {
+                    "date": 1703769328051,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n \r\n public class Score : MonoBehaviour\r\n {\r\n     public Text score;\r\n-    public float score;\r\n+    public float scorecount;\r\n     // Start is called before the first frame update\r\n     void Start()\r\n     {\r\n         \r\n"
+                },
+                {
+                    "date": 1703769351588,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,7 +16,7 @@\n \r\n     // Update is called once per frame\r\n     void Update()\r\n     {\r\n-        \r\n+        score\r\n     }\r\n }\r\n"
+                },
+                {
+                    "date": 1703769358245,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,7 +16,7 @@\n \r\n     // Update is called once per frame\r\n     void Update()\r\n     {\r\n-        score\r\n+        score.text = \"Score:\"\r\n     }\r\n }\r\n"
+                },
+                {
+                    "date": 1703769370165,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,22 @@\n+using System.Collections;\r\n+using System.Collections.Generic;\r\n+using UnityEngine;\r\n+using UnityEngine.UI;\r\n+\r\n+\r\n+public class Score : MonoBehaviour\r\n+{\r\n+    public Text score;\r\n+    public float scorecount;\r\n+    // Start is called before the first frame update\r\n+    void Start()\r\n+    {\r\n+        \r\n+    }\r\n+\r\n+    // Update is called once per frame\r\n+    void Update()\r\n+    {\r\n+        score.text = \"Score: \";\r\n+    }\r\n+}\r\n"
+                },
+                {
+                    "date": 1703769385235,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,29 +16,7 @@\n \r\n     // Update is called once per frame\r\n     void Update()\r\n     {\r\n-        score.text = \"Score: \";\r\n+        score.text = \"Score: \" + Math;\r\n     }\r\n }\r\n-using System.Collections;\r\n-using System.Collections.Generic;\r\n-using UnityEngine;\r\n-using UnityEngine.UI;\r\n-\r\n-\r\n-public class Score : MonoBehaviour\r\n-{\r\n-    public Text score;\r\n-    public float scorecount;\r\n-    // Start is called before the first frame update\r\n-    void Start()\r\n-    {\r\n-        \r\n-    }\r\n-\r\n-    // Update is called once per frame\r\n-    void Update()\r\n-    {\r\n-        score.text = \"Score:\"\r\n-    }\r\n-}\r\n"
+                },
+                {
+                    "date": 1703769390839,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,7 +16,7 @@\n \r\n     // Update is called once per frame\r\n     void Update()\r\n     {\r\n-        score.text = \"Score: \" + Math;\r\n+        score.text = \"Score: \" + Mathf.Round;\r\n     }\r\n }\r\n"
+                },
+                {
+                    "date": 1703769402559,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,7 +16,7 @@\n \r\n     // Update is called once per frame\r\n     void Update()\r\n     {\r\n-        score.text = \"Score: \" + Mathf.Round;\r\n+        score.text = \"Score: \" + Mathf.Round(scorecount);\r\n     }\r\n }\r\n"
+                },
+                {
+                    "date": 1703769732457,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n \r\n public class Score : MonoBehaviour\r\n {\r\n     public Text score;\r\n-    public float scorecount;\r\n+    public static int scorecount;\r\n     // Start is called before the first frame update\r\n     void Start()\r\n     {\r\n         \r\n"
+                },
+                {
+                    "date": 1703769768025,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,22 @@\n+using System.Collections;\r\n+using System.Collections.Generic;\r\n+using UnityEngine;\r\n+using UnityEngine.UI;\r\n+\r\n+\r\n+public class Score : MonoBehaviour\r\n+{\r\n+    public Text score;\r\n+    public static int scorecount;\r\n+    // Start is called before the first frame update\r\n+    void Start()\r\n+    {\r\n+        \r\n+    }\r\n+\r\n+    // Update is called once per frame\r\n+    void Update()\r\n+    {\r\n+        score.text = \"Score:  \" + Mathf.Round(scorecount);\r\n+    }\r\n+}\r\n"
+                },
+                {
+                    "date": 1703769799637,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,26 +19,4 @@\n     {\r\n         score.text = \"Score:  \" + Mathf.Round(scorecount);\r\n     }\r\n }\r\n-using System.Collections;\r\n-using System.Collections.Generic;\r\n-using UnityEngine;\r\n-using UnityEngine.UI;\r\n-\r\n-\r\n-public class Score : MonoBehaviour\r\n-{\r\n-    public Text score;\r\n-    public static int scorecount;\r\n-    // Start is called before the first frame update\r\n-    void Start()\r\n-    {\r\n-        \r\n-    }\r\n-\r\n-    // Update is called once per frame\r\n-    void Update()\r\n-    {\r\n-        score.text = \"Score: \" + Mathf.Round(scorecount);\r\n-    }\r\n-}\r\n"
+                },
+                {
+                    "date": 1703769862859,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n \r\n public class Score : MonoBehaviour\r\n {\r\n     public Text score;\r\n-    public static int scorecount;\r\n+    public static int scorecount = 0;\r\n     // Start is called before the first frame update\r\n     void Start()\r\n     {\r\n         \r\n@@ -16,7 +16,7 @@\n \r\n     // Update is called once per frame\r\n     void Update()\r\n     {\r\n-        score.text = \"Score:  \" + Mathf.Round(scorecount);\r\n+        score.text = \"Score:  \" + \"Mathf.Round(scorecount)\";\r\n     }\r\n }\r\n"
+                }
+            ],
+            "date": 1703769132801,
+            "name": "Commit-0",
+            "content": "using System.Collections;\r\nusing System.Collections.Generic;\r\nusing UnityEngine;\r\nusing UnityEngine;\r\n\r\n\r\npublic class Score : MonoBehaviour\r\n{\r\n    // Start is called before the first frame update\r\n    void Start()\r\n    {\r\n        \r\n    }\r\n\r\n    // Update is called once per frame\r\n    void Update()\r\n    {\r\n        \r\n    }\r\n}\r\n"
+        }
+    ]
+}

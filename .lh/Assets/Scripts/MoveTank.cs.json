@@ -1,0 +1,18 @@
+{
+    "sourceFile": "Assets/Scripts/MoveTank.cs",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1703934329514,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1703934329514,
+            "name": "Commit-0",
+            "content": "using System.Collections;\nusing System.Collections.Generic;\nusing UnityEngine;\n\npublic class MoveTank : MonoBehaviour\n{\n    public float moveSpeed = 5.0f;\n    public float rotationSpeed = 120.0f;\n    public GameObject[] leftWheels;\n    public GameObject[] rightWheels;\n    public float wheelRotationSpeed = 200.0f;\n    public AudioSource movementAudio;\n    public AudioClip engineIdling;\n    public AudioClip engineDriving;\n    public float pitchRange = 0.2f;\n\n    private Rigidbody rb;\n    private float moveInput;\n    private float rotationInput;\n    private float originalPitch;\n\n    void Start()\n    {\n        rb = GetComponent<Rigidbody>();\n        originalPitch = movementAudio.pitch;\n    }\n\n    void Update()\n    {\n        moveInput = Input.GetAxis(\"Vertical\");\n        rotationInput = Input.GetAxis(\"Horizontal\");\n\n        RotateWheels();\n\n        EngineAudio();\n    }\n\n    void FixedUpdate()\n    {\n        MoveTankObj(moveInput);\n        RotateTank(rotationInput);\n    }\n\n    void MoveTankObj(float input)\n    {\n        Vector3 moveDirection = transform.forward * input * moveSpeed * Time.fixedDeltaTime;\n        rb.MovePosition(rb.position + moveDirection);\n    }\n\n    void RotateTank(float input)\n    {\n        float rotation = input * rotationSpeed * Time.fixedDeltaTime;\n        Quaternion turnRotation = Quaternion.Euler(0.0f, rotation, 0.0f);\n        rb.MoveRotation(rb.rotation * turnRotation);\n    }\n\n    void RotateWheels()\n    {\n        float wheelRotation = moveInput * wheelRotationSpeed * Time.deltaTime;\n\n        // Move the left wheels\n        foreach (GameObject wheel in leftWheels)\n        {\n            if (wheel != null)\n            {\n                wheel.transform.Rotate(wheelRotation - rotationInput * wheelRotationSpeed * Time.deltaTime, 0.0f, 0.0f);\n            }\n        }\n\n        // Move the right wheels\n        foreach (GameObject wheel in rightWheels)\n        {\n            if (wheel != null)\n            {\n                wheel.transform.Rotate(wheelRotation + rotationInput * wheelRotationSpeed * Time.deltaTime, 0.0f, 0.0f);\n            }\n        }\n    }\n\n    void EngineAudio()\n    {\n        if (Mathf.Abs(moveInput) < 0.1f && Mathf.Abs(rotationInput) < 0.1f)\n        {\n            if (movementAudio.clip == engineDriving)\n            {\n                movementAudio.clip = engineIdling;\n                movementAudio.pitch = Random.Range(originalPitch - pitchRange, originalPitch + pitchRange);\n                movementAudio.Play();\n            }\n        }\n        else\n        {\n            if (movementAudio.clip == engineIdling)\n            {\n                movementAudio.clip = engineDriving;\n                movementAudio.pitch = Random.Range(originalPitch - pitchRange, originalPitch + pitchRange);\n                movementAudio.Play();\n            }\n        }\n    }\n}\n"
+        }
+    ]
+}

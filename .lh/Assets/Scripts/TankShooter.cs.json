@@ -1,0 +1,54 @@
+{
+    "sourceFile": "Assets/Scripts/TankShooter.cs",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 9,
+            "patches": [
+                {
+                    "date": 1703939468893,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1703939474118,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,23 +22,9 @@\n     \r\n \r\n     void Shoot()\r\n     {\r\n-        // Create a bullet at the firePoint position and rotation\r\n-        //GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);\r\n-\r\n-        // Get the rigidbody of the bullet and apply force forward\r\n-       // Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();\r\n-       /* if (bulletRb != null)\r\n-        {\r\n-            // Apply force in the forward direction of the firePoint\r\n-            bulletRb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);\r\n-        }\r\n-\r\n-        // Destroy the bullet after a certain time (adjust as needed)\r\n-        Destroy(bullet, 2f);*/\r\n-\r\n-\r\n+      \r\n         Vector3 spawnPosition = transform.position;\r\n        //Quaternion spawnRotation = Quaternion.identity;\r\n         Quaternion spawnRotation = transform.rotation;\r\n         Vector3 localXDirection = transform.TransformDirection(Vector3.forward);\r\n"
+                },
+                {
+                    "date": 1703939546114,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,12 @@\n     public GameObject bulletPrefab;\r\n     public float bulletForce = 10.0f;\r\n     \r\n     //private Transform enemy;\r\n-    \r\n+    void Start(){\r\n+\r\n+        //enemy = GameObject.FindGameObjectWithTag(\"Enemy\").transform;\r\n+    }\r\n     void Update()\r\n     {\r\n         // Check for the left mouse button\r\n         if (Input.GetButtonDown(\"Fire1\"))\r\n@@ -22,9 +25,23 @@\n     \r\n \r\n     void Shoot()\r\n     {\r\n-      \r\n+        // Create a bullet at the firePoint position and rotation\r\n+        //GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);\r\n+\r\n+        // Get the rigidbody of the bullet and apply force forward\r\n+       // Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();\r\n+       /* if (bulletRb != null)\r\n+        {\r\n+            // Apply force in the forward direction of the firePoint\r\n+            bulletRb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);\r\n+        }\r\n+\r\n+        // Destroy the bullet after a certain time (adjust as needed)\r\n+        Destroy(bullet, 2f);*/\r\n+\r\n+\r\n         Vector3 spawnPosition = transform.position;\r\n        //Quaternion spawnRotation = Quaternion.identity;\r\n         Quaternion spawnRotation = transform.rotation;\r\n         Vector3 localXDirection = transform.TransformDirection(Vector3.forward);\r\n"
+                },
+                {
+                    "date": 1703939652268,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,8 @@\n     \r\n     //private Transform enemy;\r\n     void Start(){\r\n \r\n-        //enemy = GameObject.FindGameObjectWithTag(\"Enemy\").transform;\r\n     }\r\n     void Update()\r\n     {\r\n         // Check for the left mouse button\r\n"
+                },
+                {
+                    "date": 1703939657417,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n public class TankShooter : MonoBehaviour\r\n {\r\n    // public Transform firePoint;\r\n     public GameObject bulletPrefab;\r\n-    public float bulletForce = 10.0f;\r\n+    public float bulletForce = 25.0f;\r\n     \r\n     //private Transform enemy;\r\n     void Start(){\r\n \r\n"
+                },
+                {
+                    "date": 1704139939758,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,23 +24,10 @@\n     \r\n \r\n     void Shoot()\r\n     {\r\n-        // Create a bullet at the firePoint position and rotation\r\n-        //GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);\r\n+        \r\n \r\n-        // Get the rigidbody of the bullet and apply force forward\r\n-       // Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();\r\n-       /* if (bulletRb != null)\r\n-        {\r\n-            // Apply force in the forward direction of the firePoint\r\n-            bulletRb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);\r\n-        }\r\n-\r\n-        // Destroy the bullet after a certain time (adjust as needed)\r\n-        Destroy(bullet, 2f);*/\r\n-\r\n-\r\n         Vector3 spawnPosition = transform.position;\r\n        //Quaternion spawnRotation = Quaternion.identity;\r\n         Quaternion spawnRotation = transform.rotation;\r\n         Vector3 localXDirection = transform.TransformDirection(Vector3.forward);\r\n"
+                },
+                {
+                    "date": 1704141828407,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n     }\r\n     void Update()\r\n     {\r\n         // Check for the left mouse button\r\n-        if (Input.GetButtonDown(\"Fire1\"))\r\n+        if (Input.GetButtonDown(\"Fire1\") )\r\n         {\r\n             Shoot();\r\n         }\r\n     }\r\n@@ -25,9 +25,8 @@\n \r\n     void Shoot()\r\n     {\r\n         \r\n-\r\n         Vector3 spawnPosition = transform.position;\r\n        //Quaternion spawnRotation = Quaternion.identity;\r\n         Quaternion spawnRotation = transform.rotation;\r\n         Vector3 localXDirection = transform.TransformDirection(Vector3.forward);\r\n"
+                },
+                {
+                    "date": 1704141838059,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n     }\r\n     void Update()\r\n     {\r\n         // Check for the left mouse button\r\n-        if (Input.GetButtonDown(\"Fire1\") )\r\n+        if (Input.GetButtonDown(\"Fire1\") || Input.GetButtonDown(\"Fire1\"))\r\n         {\r\n             Shoot();\r\n         }\r\n     }\r\n"
+                },
+                {
+                    "date": 1704141843224,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n     }\r\n     void Update()\r\n     {\r\n         // Check for the left mouse button\r\n-        if (Input.GetButtonDown(\"Fire1\") || Input.GetButtonDown(\"Fire1\"))\r\n+        if (Input.GetButtonDown(\"Fire1\") || Input.GetButtonDown(\"Space\"))\r\n         {\r\n             Shoot();\r\n         }\r\n     }\r\n"
+                },
+                {
+                    "date": 1704141905217,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,16 +12,17 @@\n     void Start(){\r\n \r\n     }\r\n     void Update()\r\n+{\r\n+    // Check for the left mouse button or the Space key\r\n+    if (Input.GetButtonDown(\"Fire1\") || Input.GetButtonDown(\"Jump\"))\r\n     {\r\n-        // Check for the left mouse button\r\n-        if (Input.GetButtonDown(\"Fire1\") || Input.GetButtonDown(\"Space\"))\r\n-        {\r\n-            Shoot();\r\n-        }\r\n+        Shoot();\r\n     }\r\n+}\r\n \r\n+\r\n     \r\n \r\n     void Shoot()\r\n     {\r\n"
+                }
+            ],
+            "date": 1703939468893,
+            "name": "Commit-0",
+            "content": "using System.Collections;\r\nusing System.Collections.Generic;\r\nusing UnityEngine;\r\n\r\npublic class TankShooter : MonoBehaviour\r\n{\r\n   // public Transform firePoint;\r\n    public GameObject bulletPrefab;\r\n    public float bulletForce = 10.0f;\r\n    \r\n    //private Transform enemy;\r\n    \r\n    void Update()\r\n    {\r\n        // Check for the left mouse button\r\n        if (Input.GetButtonDown(\"Fire1\"))\r\n        {\r\n            Shoot();\r\n        }\r\n    }\r\n\r\n    \r\n\r\n    void Shoot()\r\n    {\r\n        // Create a bullet at the firePoint position and rotation\r\n        //GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);\r\n\r\n        // Get the rigidbody of the bullet and apply force forward\r\n       // Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();\r\n       /* if (bulletRb != null)\r\n        {\r\n            // Apply force in the forward direction of the firePoint\r\n            bulletRb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);\r\n        }\r\n\r\n        // Destroy the bullet after a certain time (adjust as needed)\r\n        Destroy(bullet, 2f);*/\r\n\r\n\r\n        Vector3 spawnPosition = transform.position;\r\n       //Quaternion spawnRotation = Quaternion.identity;\r\n        Quaternion spawnRotation = transform.rotation;\r\n        Vector3 localXDirection = transform.TransformDirection(Vector3.forward);\r\n        Vector3 velocity = localXDirection * bulletForce;\r\n\r\n        GameObject bullet = Instantiate(bulletPrefab, spawnPosition, spawnRotation);\r\n        Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();\r\n        bulletRb.velocity = velocity;\r\n\r\n    }\r\n    \r\n}\r\n"
+        }
+    ]
+}

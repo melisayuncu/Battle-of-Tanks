@@ -1,0 +1,18 @@
+{
+    "sourceFile": "Assets/Scripts/PlayerBullet.cs",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1703939169174,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1703939169174,
+            "name": "Commit-0",
+            "content": "using System.Collections;\r\nusing UnityEngine;\r\n\r\npublic class PlayerBullet : MonoBehaviour\r\n{\r\n    private bool hasCausedDamage = false;\r\n\r\n    public int damage = 1;\r\n\r\n    public GameObject explosionPrefab;\r\n    public AudioSource explosionAudio;\r\n    public ParticleSystem explosionParticles;\r\n\r\n    void Start()\r\n    {\r\n        explosionParticles = Instantiate(explosionPrefab).GetComponent<ParticleSystem>();\r\n        explosionAudio = explosionParticles.GetComponent<AudioSource>();\r\n        explosionParticles.gameObject.SetActive(false);\r\n    }\r\n\r\n    void OnCollisionEnter(Collision col)\r\n    {\r\n        // Check if the collided object is an enemy\r\n        if (!hasCausedDamage && col.gameObject.CompareTag(\"Enemy\"))\r\n        {\r\n            // Apply damage to the enemy\r\n            EnemyHealth enemyHealth = col.gameObject.GetComponent<EnemyHealth>();\r\n            if (enemyHealth != null)\r\n            {\r\n                enemyHealth.TakeDamage(damage);\r\n\r\n                // Play explosion effect\r\n                explosionParticles.transform.position = transform.position;\r\n                explosionParticles.gameObject.SetActive(true);\r\n                explosionParticles.Play();\r\n                explosionAudio.Play();\r\n\r\n                // Wait for a delay before destroying the bullet\r\n                StartCoroutine(DelayedDestroy(0.001f));\r\n\r\n                hasCausedDamage = true; // Set the flag to true to indicate that damage has been caused\r\n            }\r\n            else\r\n            {\r\n                Debug.LogError(\"EnemyHealth component not found on the collided object.\");\r\n            }\r\n        }\r\n        else\r\n        {\r\n            Debug.Log(\"Collision with non-enemy object.\");\r\n        }\r\n    }\r\n\r\n    IEnumerator DelayedDestroy(float delay)\r\n    {\r\n        yield return new WaitForSeconds(delay);\r\n        Destroy(gameObject);\r\n    }\r\n}\r\n"
+        }
+    ]
+}
