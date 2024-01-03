@@ -34,7 +34,10 @@ public class EnemyBullet : MonoBehaviour
                 explosionParticles.transform.position = transform.position;
                 explosionParticles.gameObject.SetActive(true);
                 explosionParticles.Play();
-                explosionAudio.Play();
+                if (explosionAudio != null)
+                {
+                    explosionAudio.Play();
+                }
 
                 // Wait for a delay before destroying the bullet
                 StartCoroutine(DelayedDestroy(0.001f));
