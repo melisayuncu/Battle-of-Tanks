@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     public Text score;
+    // Initializing the score count to 0 
     public static int scorecount = 0;
     // Start is called before the first frame update
     void Start()
