@@ -16,6 +16,7 @@ public class EnemyManager : MonoBehaviour
     // Current count of spawned enemies
     private int currentEnemyCount = 0;
 
+    // Start method
     void Start()
     {
         // Spawn initial set of enemies when the game starts
@@ -45,7 +46,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    // New method to spawn a single tank at one of the spawn points
+    // Method to spawn a single tank at one of the random spawn points
     void SpawnSingleTank()
     {
         // Check if the total number of enemies is less than the maximum limit
