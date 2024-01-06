@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class CrosshairFollowMouse : MonoBehaviour
 {
-    public float followSpeed = 10f; // Adjust the speed of following
+    // To adjust the speed of following
+    public float followSpeed = 10f; 
 
     // Update is called once per frame
     void Update()
