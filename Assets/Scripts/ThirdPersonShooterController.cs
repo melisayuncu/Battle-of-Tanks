@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine; // we want to change something on the camera itself later
+using Cinemachine; 
 public class ThirdPersonShooterController : MonoBehaviour
 {
+    // Cinemachine cameras for the tank
     private CinemachineVirtualCamera tankFollowCamera;
     private CinemachineVirtualCamera tankAimCamera;
 
