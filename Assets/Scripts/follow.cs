@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Follow : MonoBehaviour
 {
-    public float movementSpeed = 5f; // Adjust the speed of movement
+    public float movementSpeed = 5f; // the speed of movement
 
     // Update is called once per frame
     void Update()
