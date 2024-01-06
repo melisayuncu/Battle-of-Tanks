@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TurretRotation : MonoBehaviour
 {
-    public float rotationSpeed = 5f; // Adjust the speed of rotation
-    public float rotationClamp = 60f; // Adjust the maximum rotation angle
+    public float rotationSpeed = 5f; // the speed of rotation
+    public float rotationClamp = 60f; // the maximum rotation angle
 
     private float currentRotation = 0f;
 
