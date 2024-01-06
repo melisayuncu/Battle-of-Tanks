@@ -5,10 +5,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
-{
+{    
+    // Text Meshes
     public TextMeshProUGUI pointsText;
     public TextMeshProUGUI highScoreText;
 
+    // Start method
     void Start()
     {
         // Retrieve the last score from PlayerPrefs
@@ -39,12 +41,14 @@ public class GameOver : MonoBehaviour
             highScoreText.text = "High Score: " + highScore.ToString();
         }
     }
+    // PlayAgain method
     public void OnPlayAgainButton()
     {
         Score.scorecount = 0;
         SceneManager.LoadScene(1);
     }
 
+    // Quit method
     public void OnQuitButton()
     {
         Application.Quit();
