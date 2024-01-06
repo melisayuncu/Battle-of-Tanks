@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TankShooter : MonoBehaviour
 {
-    // public Transform firePoint;
     // Prefab of the bullet to be shot
     public GameObject bulletPrefab;
 
