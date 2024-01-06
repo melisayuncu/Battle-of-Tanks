@@ -5,6 +5,7 @@ public class EnemyBullet : MonoBehaviour
 {
     private bool hasCausedDamage = false;
 
+    // Setting the damage value to 1
     public int damage = 1;
 
     // Prefabs and components for explosion effects
@@ -12,6 +13,7 @@ public class EnemyBullet : MonoBehaviour
     public AudioSource explosionAudio;
     public ParticleSystem explosionParticles;
 
+    // Start method
     void Start()
     {
         // Instantiate explosion particles and get references to audio and particle components
@@ -20,6 +22,7 @@ public class EnemyBullet : MonoBehaviour
         explosionParticles.gameObject.SetActive(false); // Deactivate explosion particles initially
     }
 
+    // Method to check the collisions
     void OnCollisionEnter(Collision col)
     {
         // Check if the bullet has already caused damage to avoid double damage
