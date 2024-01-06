@@ -17,6 +17,7 @@ public class EnemyHealth : MonoBehaviour
     public delegate void EnemyKilled();
     public static event EnemyKilled onEnemyKilled;
 
+    // Start method
     void Start()
     {
         // Initialize health
@@ -65,7 +66,7 @@ public class EnemyHealth : MonoBehaviour
             PlayerPrefs.Save();
         }
 
-        // Notify subscribers that an enemy has been killed
+        // Notify if that an enemy has been killed
         if (onEnemyKilled != null)
         {
             onEnemyKilled();
