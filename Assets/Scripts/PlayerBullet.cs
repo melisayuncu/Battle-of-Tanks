@@ -4,20 +4,24 @@ using UnityEngine;
 public class PlayerBullet : MonoBehaviour
 {
     private bool hasCausedDamage = false;
-
+    // Setting damage value to 1
     public int damage = 1;
 
+    
     public GameObject explosionPrefab;
     public AudioSource explosionAudio;
     public ParticleSystem explosionParticles;
 
+    // Start method
     void Start()
     {
+        // Explosion's audio and particules
         explosionParticles = Instantiate(explosionPrefab).GetComponent<ParticleSystem>();
         explosionAudio = explosionParticles.GetComponent<AudioSource>();
         explosionParticles.gameObject.SetActive(false);
     }
-
+    
+    // Method to check the collisions
     void OnCollisionEnter(Collision col)
     {
         // Check if the collided object is an enemy
@@ -55,6 +59,7 @@ public class PlayerBullet : MonoBehaviour
         }
     }
 
+    // Delayed destroy method
     IEnumerator DelayedDestroy(float delay)
     {
         yield return new WaitForSeconds(delay);
