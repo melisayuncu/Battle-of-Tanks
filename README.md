@@ -11,11 +11,11 @@ _How to Play?_
 
 •	Rotate Right: D or →
 
-•	Shoot: Left Mouse Button or Space
+•	Shoot: Left Mouse Click or Space
 
 •	Rotate Turret: Q and E
 
-•	Aim Control: Z
+•	Aim Control: Right Mouse Click or Z
 
 
 *Contributers*
